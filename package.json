@@ -1,0 +1,65 @@
+{
+  "name": "vscode-extension-manager",
+  "displayName": "VS Code Extension Manager",
+  "description": "Export and import VS Code extensions between different installations",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:vscode-extension-manager.exportExtensions",
+    "onCommand:vscode-extension-manager.importExtensions"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "vscode-extension-manager.exportExtensions",
+        "title": "Export Extensions"
+      },
+      {
+        "command": "vscode-extension-manager.importExtensions",
+        "title": "Import Extensions"
+      }
+    ],
+    "configuration": {
+      "title": "Extension Manager",
+      "properties": {
+        "extensionManager.cliCommand": {
+          "type": "string",
+          "default": "auto",
+          "description": "Command to use for installing extensions (e.g., 'code', 'cursor', or 'auto' to detect).",
+          "enum": [
+            "auto",
+            "code",
+            "cursor",
+            "codium"
+          ]
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package",
+    "publish": "vsce publish",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^20.11.5",
+    "@types/vscode": "^1.60.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "vsce": "^2.15.0"
+  }
+}
