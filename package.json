@@ -2,7 +2,12 @@
   "name": "vscode-extension-manager",
   "displayName": "VS Code Extension Manager",
   "description": "Export and import VS Code extensions between different installations",
-  "version": "0.0.1",
+  "version": "0.0.4",
+  "publisher": "ranjeeth-dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ranjeet-h/vsc-extension-manager"
+  },
   "engines": {
     "vscode": "^1.60.0"
   },
@@ -10,21 +15,99 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:vscode-extension-manager.exportExtensions",
-    "onCommand:vscode-extension-manager.importExtensions"
+    "onView:extensionManagerView"
   ],
   "main": "./out/extension.js",
   "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "extension-manager",
+          "title": "Extension Manager",
+          "icon": "$(book)"
+        }
+      ]
+    },
+    "views": {
+      "extension-manager": [
+        {
+          "id": "extensionManagerView",
+          "name": "Extensions",
+          "type": "tree"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "extensionManagerView",
+        "contents": "No extensions loaded.\n[Load Extensions File](command:vscode-extension-manager.loadFile)\n\nOr export your current extensions:\n[Export Extensions](command:vscode-extension-manager.exportExtensions)"
+      }
+    ],
     "commands": [
       {
         "command": "vscode-extension-manager.exportExtensions",
-        "title": "Export Extensions"
+        "title": "Export Extensions",
+        "category": "Extension Manager"
       },
       {
         "command": "vscode-extension-manager.importExtensions",
-        "title": "Import Extensions"
+        "title": "Import Extensions",
+        "category": "Extension Manager"
+      },
+      {
+        "command": "vscode-extension-manager.loadFile",
+        "title": "Load Extensions File",
+        "icon": "$(folder-opened)",
+        "category": "Extension Manager"
+      },
+      {
+        "command": "vscode-extension-manager.installSelected",
+        "title": "Install Selected",
+        "icon": "$(cloud-download)",
+        "category": "Extension Manager"
+      },
+      {
+        "command": "vscode-extension-manager.selectAll",
+        "title": "Select All",
+        "icon": "$(check-all)",
+        "category": "Extension Manager"
+      },
+      {
+        "command": "vscode-extension-manager.deselectAll",
+        "title": "Deselect All",
+        "icon": "$(close-all)",
+        "category": "Extension Manager"
+      },
+      {
+        "command": "vscode-extension-manager.showError",
+        "title": "Show Error",
+        "category": "Extension Manager"
       }
     ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "vscode-extension-manager.loadFile",
+          "when": "view == extensionManagerView",
+          "group": "navigation"
+        },
+        {
+          "command": "vscode-extension-manager.installSelected",
+          "when": "view == extensionManagerView",
+          "group": "navigation"
+        },
+        {
+          "command": "vscode-extension-manager.selectAll",
+          "when": "view == extensionManagerView",
+          "group": "navigation"
+        },
+        {
+          "command": "vscode-extension-manager.deselectAll",
+          "when": "view == extensionManagerView",
+          "group": "navigation"
+        }
+      ]
+    },
     "configuration": {
       "title": "Extension Manager",
       "properties": {
@@ -51,8 +134,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Ranjeet Harishchandre",
+  "license": "SEE LICENSE IN LICENSE",
   "type": "module",
   "devDependencies": {
     "@types/node": "^20.11.5",
@@ -60,6 +143,7 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
+    "jsonc-parser": "^3.3.1",
     "vsce": "^2.15.0"
   }
 }
