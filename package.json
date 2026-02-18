@@ -1,12 +1,13 @@
 {
-  "name": "vscode-extension-manager",
-  "displayName": "VS Code Extension Manager",
-  "description": "Export and import VS Code extensions between different installations",
-  "version": "0.0.4",
-  "publisher": "ranjeeth-dev",
+  "name": "vscode-extension-manager-legacy",
+  "displayName": "VS Code Extension Manager (Legacy)",
+  "description": "Export and import VS Code extensions between different installations (for legacy installations of VSCode)",
+  "version": "0.0.1",
+  "author": "Ranjeet Harishchandre (ranjeeth-dev)",
+  "publisher": "dievilz",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ranjeet-h/vsc-extension-manager"
+    "url": "https://github.com/dievilz/vsc-extension-manager-legacy"
   },
   "engines": {
     "vscode": "^1.60.0"
@@ -134,9 +135,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "Ranjeet Harishchandre",
   "license": "SEE LICENSE IN LICENSE",
-  "type": "module",
   "devDependencies": {
     "@types/node": "^20.11.5",
     "@types/vscode": "^1.60.0",

@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "module": "NodeNext",
+    "module": "commonjs",
     "target": "ES2020",
-    "moduleResolution": "NodeNext",
+    "moduleResolution": "node",
     "outDir": "./out",
     "rootDir": "./src",
     "sourceMap": true,
